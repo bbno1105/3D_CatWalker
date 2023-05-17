@@ -30,9 +30,7 @@ public class JoyStick : MonoBehaviour
     void Update()
     {
         InputJoyStick();
-
     }
-
     void InputJoyStick()
     {
         // TODO : 특정 공간에만 적용되도록 수정 필요

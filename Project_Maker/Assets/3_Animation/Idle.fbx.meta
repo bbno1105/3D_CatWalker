@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 065096f07876fc74cb23918efcf241f6
+guid: db1043897e1a59c4c94bf2a944599cd6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Landing
+    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -19,14 +19,12 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tParent for 'Hips' differs from one found in HumanDescription.
+      'Idle' was found instead of 'Puppet Kid Armature'.\n"
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'LeftShoulder' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'RightShoulder' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -40,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Landing
+      name: Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 150
+      lastFrame: 350
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
