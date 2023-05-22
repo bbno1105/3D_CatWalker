@@ -7,6 +7,13 @@ public class GameManager : SingletonBehabiour<GameManager>
     PlayerData pData;
     public PlayerData Pdata { get { return pData; } }
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         // LoadData();
