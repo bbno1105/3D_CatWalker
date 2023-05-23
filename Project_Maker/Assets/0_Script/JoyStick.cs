@@ -29,15 +29,19 @@ public class JoyStick : MonoBehaviour
 
     void Update()
     {
-        InputJoyStick();
+        if (InputJoyStick())
+        {
+            PlayerControl.Instance.Move();
+        }
     }
-    void InputJoyStick()
+    bool InputJoyStick()
     {
         // TODO : 특정 공간에만 적용되도록 수정 필요
         if (Input.GetMouseButtonDown(0) && _isButtonDowning)
         {
             SetTouchPoint();
             _joyStickObject.SetActive(true);
+            return true;
         }
 
         if (Input.GetMouseButton(0) && _isButtonDowning)
@@ -55,6 +59,7 @@ public class JoyStick : MonoBehaviour
             }
 
             _stickPosition.position = _joySticPosition.position + new Vector3(_moveDirection.x, _moveDirection.y, 0) * _maxStickRange * _distance;
+            return true;
         }
 
         if (Input.GetMouseButtonUp(0) && !_isButtonDowning)
@@ -63,8 +68,10 @@ public class JoyStick : MonoBehaviour
 
             _joyStickObject.SetActive(false);
             _stickPosition.position = _joySticPosition.position;
-
+            return true;
         }
+
+        return false;
     }
 
     void SetTouchPoint()

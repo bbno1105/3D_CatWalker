@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : ControlBase<PlayerControl>
 {
-    [SerializeField] Transform player;
-    Transform playerModel;
-    Animator anicon;
+    [SerializeField] Player player;
 
     public Vector2 MoveDirection;
     public float MoveRate;
@@ -14,24 +12,15 @@ public class PlayerControl : ControlBase<PlayerControl>
     protected override void Awake()
     {
         base.Awake();
-
-        playerModel = player.GetChild(0);
-        anicon = playerModel.GetComponent<Animator>();
     }
     protected override void Open(PlayerData _pData)
     {
         base.Open(_pData);
     }
 
-    void Update()
+    public void Move()
     {
-        Move();
+        player.Move(MoveDirection, MoveRate);
     }
 
-    void Move()
-    {
-        anicon.SetFloat("MoveBlend", MoveRate);
-        playerModel.forward = new Vector3(MoveDirection.x, 0, MoveDirection.y);
-        player.position += playerModel.forward * MoveRate * Sdata.GetEnviData("PlayerSpeed").Longvalue_L * Time.deltaTime;
-    }
 }
