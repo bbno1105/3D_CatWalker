@@ -1487,6 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408352899}
+  joyStick: {fileID: 291132742}
   MoveDirection: {x: 0, y: 0}
   MoveRate: 0
 --- !u!114 &836500238

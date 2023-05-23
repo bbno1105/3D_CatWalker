@@ -27,16 +27,8 @@ public class JoyStick : MonoBehaviour
         _joyStickObject.SetActive(false);
     }
 
-    void Update()
+    public bool InputJoyStick()
     {
-        if (InputJoyStick())
-        {
-            PlayerControl.Instance.Move();
-        }
-    }
-    bool InputJoyStick()
-    {
-        // TODO : 특정 공간에만 적용되도록 수정 필요
         if (Input.GetMouseButtonDown(0) && _isButtonDowning)
         {
             SetTouchPoint();

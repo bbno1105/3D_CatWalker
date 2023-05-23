@@ -10,16 +10,17 @@ public class Player : MonoBehaviour
     // [SerializeField] SearchArea ActiveArea;
     [SerializeField] SearchEnemy ThrowArea;
 
+    Coroutine AttackTargetCoroutine;
     Enemy target;
 
     void Start()
     {
-        StartCoroutine(AttackCoroutine());
+        if (AttackTargetCoroutine != null) StopCoroutine(AttackTargetCoroutine);
+        AttackTargetCoroutine = StartCoroutine(AttackTarget());
     }
 
-    IEnumerator AttackCoroutine()
+    IEnumerator AttackTarget()
     {
-        WaitForSecondsRealtime time = new WaitForSecondsRealtime(1);
         while(true)
         {
             if(0 < ThrowArea.targets.Count)
@@ -30,8 +31,7 @@ public class Player : MonoBehaviour
             {
                 target = null;
             }
-
-            yield return time;
+            yield return new WaitForSecondsRealtime(1);
         }
     }
 

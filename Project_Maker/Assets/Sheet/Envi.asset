@@ -16,4 +16,4 @@ MonoBehaviour:
   WorksheetName: Envi
   dataArray:
   - id_s: PlayerSpeed
-    longvalue_l: 2
+    longvalue_l: 3

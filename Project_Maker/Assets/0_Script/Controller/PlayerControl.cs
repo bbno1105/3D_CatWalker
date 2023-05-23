@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : ControlBase<PlayerControl>
 {
     [SerializeField] Player player;
+    [SerializeField] JoyStick joyStick;
 
     public Vector2 MoveDirection;
     public float MoveRate;
@@ -18,9 +19,13 @@ public class PlayerControl : ControlBase<PlayerControl>
         base.Open(_pData);
     }
 
-    public void Move()
+    void Update()
     {
-        player.Move(MoveDirection, MoveRate);
+        Move();
     }
 
+    public void Move()
+    {
+        if (joyStick.InputJoyStick()) player.Move(MoveDirection, MoveRate);
+    }
 }
