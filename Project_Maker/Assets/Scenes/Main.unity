@@ -170,7 +170,7 @@ MonoBehaviour:
   EnemyUIPrefab: {fileID: 5636801764996812310, guid: 9ca0754df79e9e94ab09fb0fea70ff09,
     type: 3}
   EnemyUIParent: {fileID: 1835126325}
-  DamageUIPrefab: {fileID: 7368206873891748539, guid: 6c5fa184a87870646a046a9b08e74e2b,
+  DamageUIPrefab: {fileID: 2170422906862738164, guid: c223848d4ef93af49b15e8a8a061b532,
     type: 3}
   DamageUIParent: {fileID: 733887358}
 --- !u!1001 &175955440

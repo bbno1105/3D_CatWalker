@@ -13,6 +13,7 @@ public class EnemyUI : MonoBehaviour
     public TextMeshProUGUI HP;
     public Slider HPSlider;
     public float ActiveTime;
+    public RectTransform DamagePos;
 
     void Awake()
     {
@@ -58,8 +59,8 @@ public class EnemyUI : MonoBehaviour
         Vector3 newPosition = target.transform.position;
         newPosition += Vector3.up * 0.5f;
 
-        Vector3 _position = Camera.main.WorldToViewportPoint(newPosition);
-        rectTransform.position = Camera.main.ViewportToScreenPoint(_position);
+        Vector2 position = Camera.main.WorldToScreenPoint(newPosition);
+        rectTransform.position = position;
     }
 
     void OnDisable()

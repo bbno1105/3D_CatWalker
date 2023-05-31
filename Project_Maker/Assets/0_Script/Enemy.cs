@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         moveSpeed = 1;
-        MaxHp = 10000;
+        MaxHp = 1000;
 
         target = PlayerControl.Instance.Player;
         NowHP = MaxHp;
@@ -52,7 +52,8 @@ public class Enemy : MonoBehaviour
             HPUI.Initialize();
         }
 
-        UIControl.Instance.ActiveDamageUI(HPUI.transform.position, _damage);
+        // µ¥¹ÌÁö UI
+        UIControl.Instance.ActiveDamageUI(transform.position, _damage);
     }
 
     void Die()

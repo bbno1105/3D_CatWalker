@@ -17,7 +17,11 @@ public class Damage : MonoBehaviour
 
     void OnEnable()
     {
-        rectTransform.position = ActivePos;
+        ActivePos += Vector3.up * 0.5f;
+        Vector2 position = Camera.main.WorldToScreenPoint(ActivePos);
+        position.y += 50;
+        position.x += 50 * Random.Range(-1, 1);
+        rectTransform.position = position;
     }
 
     public void ActiveFalse()
