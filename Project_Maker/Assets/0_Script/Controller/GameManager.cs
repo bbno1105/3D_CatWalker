@@ -16,6 +16,7 @@ public class GameManager : SingletonBehabiour<GameManager>
 
     void Start()
     {
+        pData = new PlayerData();
         // LoadData();
     }
 

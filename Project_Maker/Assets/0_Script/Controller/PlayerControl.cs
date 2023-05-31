@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerControl : ControlBase<PlayerControl>
 {
-    [SerializeField] Player player;
+    public Player Player;
+
     [SerializeField] JoyStick joyStick;
 
+    // Move
     public Vector2 MoveDirection;
     public float MoveRate;
+
+    // Attack
+    float time;
+    public Enemy target;
 
     protected override void Awake()
     {
@@ -21,11 +27,36 @@ public class PlayerControl : ControlBase<PlayerControl>
 
     void Update()
     {
+        Search();
         Move();
+        Attack();
+    }
+
+    void Search()
+    {
+        Player.SearchArea.RefreshTarget();
     }
 
     public void Move()
     {
-        if (joyStick.InputJoyStick()) player.Move(MoveDirection, MoveRate);
+        if (joyStick.InputJoyStick()) Player.Move(MoveDirection, MoveRate);
+    }
+
+    public void Attack()
+    {
+        if (Player.SearchArea.IsTargetOn)
+        {
+            time += PData.ATTSPD * Time.deltaTime;
+            if(1 < time)
+            {
+                Player.Attack(PData.ATTSPD);
+                time = 0;
+            }
+        }
+        else if (target)
+        {
+            target = null;
+            time = 0;
+        }
     }
 }
