@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f5dd902e3266347b6b5fd71389b914, type: 3}
+  m_Name: Exp
+  m_EditorClassIdentifier: 
+  SheetName: Assets/Sheet/Data.xlsx
+  WorksheetName: Exp
+  dataArray:
+  - id_i: 0
+    exp_i: 100
+  - id_i: 1
+    exp_i: 200
+  - id_i: 2
+    exp_i: 400
+  - id_i: 3
+    exp_i: 700
+  - id_i: 4
+    exp_i: 1100
+  - id_i: 5
+    exp_i: 1600
+  - id_i: 6
+    exp_i: 2200
+  - id_i: 7
+    exp_i: 2900
+  - id_i: 8
+    exp_i: 3700
+  - id_i: 9
+    exp_i: 4600
+  - id_i: 10
+    exp_i: 5600

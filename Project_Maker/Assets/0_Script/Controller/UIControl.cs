@@ -6,7 +6,48 @@ using TMPro;
 
 public class UIControl : ControlBase<UIControl>
 {
+    // Gold UI
+    [Header("Gold")]
+    [SerializeField] TextMeshProUGUI Txt_Gold;
+    public void RefreshGold(int _gold)
+    {
+        Txt_Gold.text = _gold.ToString();
+    }
+
+    // StageData UI
+    [Header("StageData")]
+    [SerializeField] TextMeshProUGUI Txt_level;
+    [SerializeField] TextMeshProUGUI Txt_exp;
+    [SerializeField] Slider Slider_exp;
+    [SerializeField] Transform UpgradeUI;
+
+
+    public void RefreshStageUI()
+    {
+        PlayerStageData PData_S = StageControl.Instance.playerStageData;
+
+        Txt_level.text = PData_S.Level.ToString();
+        Txt_exp.text = PData_S.Exp.ToString();
+        Slider_exp.value = (float)PData_S.Exp / Sdata.GetExpData(PData_S.Level).EXP_I;
+    }
+
+    public void ActiveUpgrade(bool _isActive)
+    {
+        UpgradeUI.gameObject.SetActive(_isActive);
+
+        if(_isActive)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            StageControl.Instance.UpgradeCount--;
+        }
+    }
+
     // 몬스터
+    [Header("Monster")]
     [SerializeField] EnemyUI EnemyUIPrefab;
     [SerializeField] Transform EnemyUIParent;
     [HideInInspector] public Stack<EnemyUI> EnemyUIPool = new Stack<EnemyUI>();
@@ -31,6 +72,7 @@ public class UIControl : ControlBase<UIControl>
     }
 
     // 데미지
+    [Header("Damage")]
     [SerializeField] Damage DamageUIPrefab;
     [SerializeField] Transform DamageUIParent;
     [HideInInspector] public Stack<Damage> DamagePool = new Stack<Damage>();

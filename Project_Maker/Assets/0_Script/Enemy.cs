@@ -59,6 +59,10 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
+
+        // юс╫ц
+        StageControl.Instance.playerStageData.Exp += 500;
+        GameManager.Instance.Pdata.AddGold(100);
     }
 
     void OnDisable()

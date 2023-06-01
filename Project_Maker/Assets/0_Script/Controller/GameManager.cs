@@ -16,8 +16,11 @@ public class GameManager : SingletonBehabiour<GameManager>
 
     void Start()
     {
-        pData = new PlayerData();
         // LoadData();
+        
+        // Test
+        pData = new PlayerData();
+        StageControl.Instance.Initialize();
     }
 
     public void SaveData()
