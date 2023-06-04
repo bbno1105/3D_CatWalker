@@ -144,7 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c26e34ed3162447a0fd88b25072e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HPUI: {fileID: 0}
   enemyModel: {fileID: 7505482945172758875}
+  NowHP: 0
+  MaxHp: 0
 --- !u!65 &7505482946381938315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,4 +176,4 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2

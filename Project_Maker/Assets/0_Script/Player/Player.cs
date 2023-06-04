@@ -10,6 +10,15 @@ public class Player : MonoBehaviour
     public Transform playerModel;
     public SearchEnemy SearchArea;
 
+    public float MaxHP;
+    public float NowHP;
+
+    public void Initialize(int _maxHP)
+    {
+        MaxHP = _maxHP;
+        NowHP = MaxHP;
+    }
+
     public void Attack(float _attackSpeed)
     {
         if (SearchArea.IsTargetOn)
@@ -33,5 +42,22 @@ public class Player : MonoBehaviour
 
         transform.position += moveVector * MoveRate * Sdata.GetEnviData("PlayerSpeed").Longvalue_L * Time.deltaTime;
         anicon.SetFloat("MoveBlend", MoveRate);
+    }
+
+    public void Damaged(float _damage)
+    {
+        NowHP -= _damage;
+        UnityEngine.Debug.Log("아야");
+        if( NowHP <= 0 )
+        {
+            NowHP = 0;
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        UnityEngine.Debug.Log("죽었습니다.");
+        Time.timeScale = 0;
     }
 }

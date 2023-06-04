@@ -27,10 +27,10 @@ public class Ball : MonoBehaviour
         float time = 0;
         while(time < lifeTime)
         {
-            transform.position += transform.forward * shotSpeed * Time.fixedDeltaTime;
-            
-            time += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
+            
+            transform.position += transform.forward * shotSpeed * Time.fixedDeltaTime;
+            time += Time.fixedDeltaTime;
         }
         gameObject.SetActive(false);
     }

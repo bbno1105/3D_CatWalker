@@ -16,9 +16,13 @@ public class Enemy : MonoBehaviour
     int rewardExp;
     int rewardGold;
 
+    bool isAttack;
+    float attackTime;
+
     private void OnEnable()
     {
         target = PlayerControl.Instance.Player;
+        isAttack = false;
     }
     public void Initialize(int _monsterID)
     {
@@ -33,9 +37,36 @@ public class Enemy : MonoBehaviour
         NowHP = MaxHp;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            isAttack = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isAttack = false;
+        }
+    }
+
     private void FixedUpdate()
     {
         Move();
+        Attack();
+    }
+
+    void Attack()
+    {
+        attackTime += Time.fixedDeltaTime;
+        if (isAttack && 1 < attackTime)
+        {
+            target.Damaged(attackPower);
+            attackTime = 0;
+        }
     }
 
     public void Move()

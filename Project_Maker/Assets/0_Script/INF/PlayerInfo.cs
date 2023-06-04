@@ -8,34 +8,39 @@ public class PlayerData
     public PlayerData()
     {
         level = 1;
+
+        hp = 10;
         attDMG = 10;
         attSPD = 1;
         moveSPD = 10;
-
-        shotSpeed = 10;
+        
+        shotSpeed = 50;
         ballLifeTime = 1;
     }
 
     int gold;
     public int Gold { get { return gold; } }
 
-    public int level;
+    int level;
     public int Level { get { return level; } }
 
-    public float attDMG;
+    int hp;
+    public int HP { get { return hp; } }
+
+    float attDMG;
     public float ATTDMG { get { return attDMG; } }
 
-    public float attSPD;
+    float attSPD;
     public float ATTSPD { get { return attSPD; } }
 
-    public float moveSPD;
+    float moveSPD;
     public float MoveSPD { get { return moveSPD; } }
 
     // Ball
-    public float shotSpeed; // ÃÑ¾Ë ¼Óµµ
+    float shotSpeed; // ÃÑ¾Ë ¼Óµµ
     public float ShotSpeed { get { return shotSpeed; } }
 
-    public float ballLifeTime; // ÃÑ ¼Óµµ
+    float ballLifeTime; // ÃÑ ¼Óµµ
     public float BallLifeTime { get { return ballLifeTime; } }
 
     public void AddGold(int value)

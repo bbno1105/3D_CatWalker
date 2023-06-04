@@ -23,6 +23,12 @@ public class PlayerControl : ControlBase<PlayerControl>
     protected override void Open(PlayerData _pData)
     {
         base.Open(_pData);
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        Player.Initialize(PData.HP);
     }
 
     void Update()
@@ -44,9 +50,10 @@ public class PlayerControl : ControlBase<PlayerControl>
 
     public void Attack()
     {
+        time += PData.ATTSPD * Time.deltaTime;
+
         if (Player.SearchArea.IsTargetOn)
         {
-            time += PData.ATTSPD * Time.deltaTime;
             if(1 < time)
             {
                 Player.Attack(PData.ATTSPD);
@@ -56,7 +63,6 @@ public class PlayerControl : ControlBase<PlayerControl>
         else if (target)
         {
             target = null;
-            time = 0;
         }
     }
 }
