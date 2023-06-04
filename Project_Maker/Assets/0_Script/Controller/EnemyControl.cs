@@ -21,7 +21,10 @@ public class EnemyControl : ControlBase<EnemyControl>
         if (EnemyPool.Count == 0) CreateEnemy(10);
 
         Enemy newEmeny = EnemyPool.Pop();
-        newEmeny.transform.position = _activePosition;
+
+        newEmeny.Initialize(101);
+        newEmeny.transform.position = _activePosition; // 생성위치
+
         newEmeny.gameObject.SetActive(true);
     }
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Sdata : SingletonBehabiour<Sdata>
 {
-    [SerializeField] Envi EnviData;
-    public static EnviData[] Envis { get { return Instance.EnviData.dataArray; } }
+    [SerializeField] EnviSheet EnviData;
+    public static EnviSheetData[] Envis { get { return Instance.EnviData.dataArray; } }
 
-    public static EnviData GetEnviData(string _id)
+    public static EnviSheetData GetEnviData(string _id)
     {
         for (int i = 0; i < Envis.Length; i++)
             if (Envis[i].ID_S == _id)
@@ -15,10 +15,10 @@ public class Sdata : SingletonBehabiour<Sdata>
         return null;
     }
 
-    [SerializeField] Exp ExpData;
-    public static ExpData[] Exps { get { return Instance.ExpData.dataArray; } }
+    [SerializeField] ExpSheet ExpData;
+    public static ExpSheetData[] Exps { get { return Instance.ExpData.dataArray; } }
 
-    public static ExpData GetExpData(int _id)
+    public static ExpSheetData GetExpData(int _id)
     {
         for (int i = 0; i < Exps.Length; i++)
             if (Exps[i].ID_I == _id)
@@ -26,14 +26,25 @@ public class Sdata : SingletonBehabiour<Sdata>
         return null;
     }
 
-    [SerializeField] Upgrade UpgradeData;
-    public static UpgradeData[] Upgrades { get { return Instance.UpgradeData.dataArray; } }
+    [SerializeField] UpgradeSheet UpgradeData;
+    public static UpgradeSheetData[] Upgrades { get { return Instance.UpgradeData.dataArray; } }
 
-    public static UpgradeData GetUpgradeData(int _id)
+    public static UpgradeSheetData GetUpgradeData(int _id)
     {
         for (int i = 0; i < Upgrades.Length; i++)
             if (Upgrades[i].ID_I == _id)
                 return Upgrades[i];
+        return null;
+    }
+
+    [SerializeField] MonsterSheet MonsterData;
+    public static MonsterSheetData[] Monsters { get { return Instance.MonsterData.dataArray; } }
+
+    public static MonsterSheetData GetMonsterData(int _id)
+    {
+        for (int i = 0; i < Monsters.Length; i++)
+            if (Monsters[i].ID_I == _id)
+                return Monsters[i];
         return null;
     }
 

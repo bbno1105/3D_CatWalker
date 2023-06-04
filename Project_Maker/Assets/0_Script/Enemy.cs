@@ -11,14 +11,25 @@ public class Enemy : MonoBehaviour
     // ╫╨ещ
     public float NowHP;
     public float MaxHp;
+    float attackPower;
     float moveSpeed;
+    int rewardExp;
+    int rewardGold;
 
     private void OnEnable()
     {
-        moveSpeed = 1;
-        MaxHp = 1000;
-
         target = PlayerControl.Instance.Player;
+    }
+    public void Initialize(int _monsterID)
+    {
+        MonsterSheetData data = Sdata.GetMonsterData(_monsterID);
+
+        MaxHp = (float)data.HP_I;
+        attackPower = data.Attack_L / 1000f;
+        moveSpeed = data.Speed_L / 1000f;
+        rewardExp = data.Rewardexp_I;
+        rewardGold = data.Reward_I;
+
         NowHP = MaxHp;
     }
 
@@ -61,8 +72,8 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
 
         // юс╫ц
-        StageControl.Instance.playerStageData.Exp += 500;
-        GameManager.Instance.Pdata.AddGold(100);
+        StageControl.Instance.playerStageData.Exp += rewardExp;
+        GameManager.Instance.Pdata.AddGold(rewardGold);
     }
 
     void OnDisable()

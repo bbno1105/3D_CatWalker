@@ -2689,9 +2689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed15c598073c1454fa9cff9d689507ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnviData: {fileID: 11400000, guid: acbd02c1eee1eb9479763ed68e27936e, type: 2}
-  ExpData: {fileID: 11400000, guid: f269efa4e05b0c34ebcd4bc7c97cacd6, type: 2}
-  UpgradeData: {fileID: 11400000, guid: 0ca6285dcf7988f43bb5146210ec09da, type: 2}
+  EnviData: {fileID: 11400000, guid: 533c88b154092154e86109f01ea61150, type: 2}
+  ExpData: {fileID: 11400000, guid: 668177ddf476885429b6f7d479f645d4, type: 2}
+  UpgradeData: {fileID: 11400000, guid: 9f8076ab96be84647a8be51b6ba50e02, type: 2}
+  MonsterData: {fileID: 11400000, guid: a6f4f0328ee7ffd46a9967ef83dee788, type: 2}
 --- !u!1 &1064071593
 GameObject:
   m_ObjectHideFlags: 0

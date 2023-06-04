@@ -8,8 +8,8 @@ public class PlayerData
     public PlayerData()
     {
         level = 1;
-        attDMG = 500;
-        attSPD = 5;
+        attDMG = 10;
+        attSPD = 1;
         moveSPD = 10;
 
         shotSpeed = 10;

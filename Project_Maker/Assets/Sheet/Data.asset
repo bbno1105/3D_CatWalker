@@ -16,27 +16,40 @@ MonoBehaviour:
   scriptFilePath: Sheet/Runtime
   editorScriptFilePath: Sheet/Editor
   sheetName: Data.xlsx
-  workSheetName: Upgrade
+  workSheetName: MonsterSheet
   columnHeaderList:
   - type: 3
     name: ID_I
     isEnable: 0
     isArray: 0
+  - type: 3
+    name: HP_I
+    isEnable: 0
+    isArray: 0
+  - type: 4
+    name: Attack_L
+    isEnable: 0
+    isArray: 0
+  - type: 4
+    name: Speed_L
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: Reward_I
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: RewardExp_I
+    isEnable: 0
+    isArray: 0
   - type: 1
-    name: Name_S
-    isEnable: 0
-    isArray: 0
-  - type: 4
-    name: Effect_L
-    isEnable: 0
-    isArray: 0
-  - type: 4
-    name: Upgrade_L
+    name: Prefab_S
     isEnable: 0
     isArray: 0
   excelFilePath: Assets/Sheet/Data.xlsx
   SheetNames:
-  - Envi
-  - Exp
-  - Upgrade
-  currentSelectedSheet: 2
+  - EnviSheet
+  - ExpSheet
+  - UpgradeSheet
+  - MonsterSheet
+  currentSelectedSheet: 3
