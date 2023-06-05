@@ -16,9 +16,15 @@ public class ControlBase<T> : SingletonBehabiour<T> where T :  ControlBase<T>
         }
     }
 
-    protected virtual void Open(PlayerData _pData)
+    public virtual void Open(PlayerData _pData)
     {
         PData = _pData;
-        IsOpen = true; 
+        IsOpen = true;
+        Initialize();
+    }
+
+    public virtual void Initialize()
+    {
+
     }
 }

@@ -20,13 +20,13 @@ public class PlayerControl : ControlBase<PlayerControl>
     {
         base.Awake();
     }
-    protected override void Open(PlayerData _pData)
+
+    public override void Open(PlayerData _pData)
     {
         base.Open(_pData);
-        Initialize();
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
         Player.Initialize(PData.HP);
     }

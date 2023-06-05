@@ -8,12 +8,14 @@ public class EnemyControl : ControlBase<EnemyControl>
     [SerializeField] Transform EnemyPoolParent;
     public Stack<Enemy> EnemyPool = new Stack<Enemy>();
 
-    private void Update()
+    protected override void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            ActiveEnemy(Vector3.zero);
-        }
+        base.Awake();
+    }
+
+    public override void Open(PlayerData _pData)
+    {
+        base.Open(_pData);
     }
 
     public void ActiveEnemy(Vector3 _activePosition)

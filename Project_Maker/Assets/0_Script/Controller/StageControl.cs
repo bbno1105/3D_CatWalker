@@ -9,19 +9,24 @@ public class StageControl : ControlBase<StageControl>
     Coroutine Cor_Upgrade;
     public float UpgradeCount;
 
-    public void Initialize()
+    protected override void Awake()
     {
-        playerStageData = new PlayerStageData();
-        UIControl.Instance.RefreshStageUI();
-        UpgradeCount = 0;
+        base.Awake();
     }
 
-    private void Update()
+    public override void Open(PlayerData _pData)
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            Time.timeScale = 0;
-        }
+        base.Open(_pData);
+    }
+
+    public override void Initialize()
+    {
+        UpgradeCount = 0;
+
+        playerStageData = new PlayerStageData();
+
+        UIControl.Instance.RefreshStageUI();
+        UIControl.Instance.RefreshStagePlayerUI();
     }
 
     public void Upgrade()

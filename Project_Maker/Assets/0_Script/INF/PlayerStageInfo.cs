@@ -10,7 +10,6 @@ public class PlayerStageData
         exp = 0;
     }
 
-    
     int level;
     public int Level { get { return level; } set { SetLevel(value); } }
 

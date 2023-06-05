@@ -20,7 +20,17 @@ public class GameManager : SingletonBehabiour<GameManager>
         
         // Test
         pData = new PlayerData();
-        StageControl.Instance.Initialize();
+    }
+
+
+
+    void OpenData(PlayerData _pData)
+    {
+        StageControl.Instance.Open(_pData);
+        BallControl.Instance.Open(_pData);
+        PlayerControl.Instance.Open(_pData);
+        EnemyControl.Instance.Open(_pData);
+        UIControl.Instance.Open(_pData);
     }
 
     public void SaveData()

@@ -47,12 +47,14 @@ public class Player : MonoBehaviour
     public void Damaged(float _damage)
     {
         NowHP -= _damage;
-        UnityEngine.Debug.Log("¾Æ¾ß");
+
         if( NowHP <= 0 )
         {
             NowHP = 0;
             Die();
         }
+
+        UIControl.Instance.RefreshStagePlayerUI();
     }
 
     public void Die()

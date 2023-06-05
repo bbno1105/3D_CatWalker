@@ -14,6 +14,16 @@ public class BallControl : ControlBase<BallControl>
         base.Awake();
     }
 
+    public override void Open(PlayerData _pData)
+    {
+        base.Open(_pData);
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+    }
+
     public void ShotBall(Vector3 _position, Vector3 _direction)
     {
         while (BallPool.Count == 0)

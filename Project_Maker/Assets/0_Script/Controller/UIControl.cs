@@ -6,6 +6,21 @@ using TMPro;
 
 public class UIControl : ControlBase<UIControl>
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    public override void Open(PlayerData _pData)
+    {
+        base.Open(_pData);
+    }
+
+    public override void Initialize()
+    {
+
+    }
+
     // Gold UI
     [Header("Gold")]
     [SerializeField] TextMeshProUGUI Txt_Gold;
@@ -17,10 +32,19 @@ public class UIControl : ControlBase<UIControl>
     // StageData UI
     [Header("StageData")]
     [SerializeField] TextMeshProUGUI Txt_level;
-    [SerializeField] TextMeshProUGUI Txt_exp;
-    [SerializeField] Slider Slider_exp;
     [SerializeField] Transform UpgradeUI;
 
+    // StageData UI
+    [Header("StagePlayerData")]
+    [SerializeField] Slider Slider_PlayerHP;
+    [SerializeField] TextMeshProUGUI Txt_exp;
+    [SerializeField] Slider Slider_exp;
+
+    public void RefreshStagePlayerUI()
+    {
+        Player player = PlayerControl.Instance.Player;
+        Slider_PlayerHP.value = player.NowHP / player.MaxHP;
+    }
 
     public void RefreshStageUI()
     {
