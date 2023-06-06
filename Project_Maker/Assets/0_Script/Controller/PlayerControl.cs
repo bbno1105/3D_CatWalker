@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerControl : ControlBase<PlayerControl>
 {
+    public enum STATE
+    {
+        NONE = 0,
+        PLAY,
+        DIE,
+    }
+    STATE state;
+    public STATE State { get { return state; } } 
+
     public Player Player;
 
     [SerializeField] JoyStick joyStick;
@@ -33,9 +42,27 @@ public class PlayerControl : ControlBase<PlayerControl>
 
     void Update()
     {
-        Search();
-        Move();
-        Attack();
+        switch (State)
+        {
+            case STATE.NONE:
+                break;
+            case STATE.PLAY:
+                {
+                    Search();
+                    Move();
+                    Attack();
+                }
+                break;
+            case STATE.DIE:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void ChangeState(STATE _state)
+    {
+        state = _state;
     }
 
     void Search()

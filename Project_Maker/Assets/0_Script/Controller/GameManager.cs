@@ -20,9 +20,8 @@ public class GameManager : SingletonBehabiour<GameManager>
         
         // Test
         pData = new PlayerData();
+        OpenData(pData);
     }
-
-
 
     void OpenData(PlayerData _pData)
     {

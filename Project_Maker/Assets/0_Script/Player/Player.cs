@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        UnityEngine.Debug.Log("ав╬З╫ю╢о╢ы.");
-        Time.timeScale = 0;
+        anicon.SetTrigger("Die");
     }
 }

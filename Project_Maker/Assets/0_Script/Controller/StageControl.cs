@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class StageControl : ControlBase<StageControl>
 {
+    public enum STATE
+    {
+        NONE = 0,
+        CAMP,
+        FIELD,
+    }
+    STATE state;
+    public STATE State { get { return state; } }
+
     public PlayerStageData playerStageData;
 
     Coroutine Cor_Upgrade;
@@ -21,14 +30,46 @@ public class StageControl : ControlBase<StageControl>
 
     public override void Initialize()
     {
-        UpgradeCount = 0;
-
-        playerStageData = new PlayerStageData();
-
-        UIControl.Instance.RefreshStageUI();
-        UIControl.Instance.RefreshStagePlayerUI();
+        // test
+        ChangeState(STATE.FIELD);
     }
 
+    public void ChangeState(STATE _state)
+    {
+        state = _state;
+        switch (state)
+        {
+            case STATE.NONE:
+                break;
+            case STATE.CAMP:
+                {
+                    PlayerControl.Instance.ChangeState(PlayerControl.STATE.NONE);
+                }
+                break;
+            case STATE.FIELD:
+                {
+                    PlayerControl.Instance.ChangeState(PlayerControl.STATE.PLAY);
+
+                    // 새로운 필드 시작
+                    UpgradeCount = 0;
+
+                    playerStageData = new PlayerStageData();
+
+                    UIControl.Instance.RefreshStageUI();
+                    UIControl.Instance.RefreshStagePlayerUI();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void StartStage()
+    {
+        ChangeState(STATE.FIELD);
+    }
+
+    // FIELD
     public void Upgrade()
     {
         if (Cor_Upgrade != null) StopCoroutine(Cor_Upgrade);
