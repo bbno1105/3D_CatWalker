@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BallControl : ControlBase<BallControl>
 {
     [SerializeField] Ball ballPrefab;
     [SerializeField] Transform ballPoolParent;
 
-    public Stack<Ball> BallPool = new Stack<Ball>();
+    IObjectPool<Ball> Pool;
 
     protected override void Awake()
     {
         base.Awake();
+        Pool = new ObjectPool<Ball>(CreateBall, OnGetBall, OnReleaseBall, OnDestroyBall, maxSize:100);
     }
 
     public override void Open(PlayerData _pData)
@@ -26,23 +28,30 @@ public class BallControl : ControlBase<BallControl>
 
     public void ShotBall(Vector3 _position, Vector3 _direction)
     {
-        while (BallPool.Count == 0)
-        {
-            CreateBall(10);
-        }
-
-        Ball newBall = BallPool.Pop();
+        var newBall = Pool.Get();
+        newBall.Initialize(_position, _direction, PData.ShotSpeed, PData.BallLifeTime, PData.ATTDMG);
         newBall.gameObject.SetActive(true);
-        newBall.transform.position = _position;
-        newBall.ShotBall(_direction, PData.ShotSpeed, PData.BallLifeTime, PData.ATTDMG);
     }
 
-    void CreateBall(int count)
+    Ball CreateBall()
     {
-        for(int i = 0; i < count; i++)
-        {
-            Ball newBall = GameObject.Instantiate(ballPrefab, ballPoolParent);
-            newBall.gameObject.SetActive(false);
-        }
+        Ball newBall = GameObject.Instantiate(ballPrefab, ballPoolParent);
+        newBall.SetManagedPool(Pool);
+        return newBall;
+    }
+
+    void OnGetBall(Ball _ball)
+    {
+        _ball.gameObject.SetActive(true);
+    }
+
+    void OnReleaseBall(Ball _ball)
+    {
+        _ball.gameObject.SetActive(false);
+    }
+
+    void OnDestroyBall(Ball _ball)
+    {
+        Destroy(_ball.gameObject);
     }
 }

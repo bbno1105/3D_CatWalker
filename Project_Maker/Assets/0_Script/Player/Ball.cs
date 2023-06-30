@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Ball : MonoBehaviour
 {
@@ -8,31 +9,28 @@ public class Ball : MonoBehaviour
 
     float damage;
     float shotSpeed;
-    float lifeTime;
 
-    public void ShotBall(Vector3 _direction, float _ShotSpeed, float _lifeTime, float _damage)
+    IObjectPool<Ball> managedPool;
+    
+    public void Initialize(Vector3 _startPos, Vector3 _direction, float _ShotSpeed, float _lifeTime, float _damage)
     {
-        this.transform.forward = _direction;
+        transform.position = _startPos;
+        transform.forward = _direction;
 
         damage = _damage;
         shotSpeed = _ShotSpeed;
-        lifeTime = _lifeTime;
 
-        if (cor_ShotBall != null) StopCoroutine(cor_ShotBall);
-        cor_ShotBall = StartCoroutine(ShotBallCoroutine());
+        Invoke("DestroyBall", _lifeTime);
     }
 
-    IEnumerator ShotBallCoroutine()
+    public void SetManagedPool(IObjectPool<Ball> _pool)
     {
-        float time = 0;
-        while(time < lifeTime)
-        {
-            yield return new WaitForFixedUpdate();
-            
-            transform.position += transform.forward * shotSpeed * Time.fixedDeltaTime;
-            time += Time.fixedDeltaTime;
-        }
-        gameObject.SetActive(false);
+        managedPool = _pool;
+    }
+    void Update()
+    {
+        Debug.DrawRay(transform.position, transform.forward);
+        transform.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
     }
 
     void OnTriggerEnter(Collider other)
@@ -48,8 +46,8 @@ public class Ball : MonoBehaviour
         }
     }
 
-    void OnDisable()
+    public void DestroyBall()
     {
-        BallControl.Instance.BallPool.Push(this);
+        managedPool.Release(this);
     }
 }
